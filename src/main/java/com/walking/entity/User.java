@@ -2,6 +2,7 @@ package com.walking.entity;
 import	java.io.Serializable;
 
 /**
+ * 公众号：编程大道
  * @Author: walking
  * @Date: 2020年5月24日
  */

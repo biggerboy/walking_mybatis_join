@@ -3,7 +3,7 @@ package com.walking.entity;
 import java.util.List;
 
 /**
- * @Description: $ 类（或接口）是
+ * 公众号：编程大道
  * @Author: walking
  * @Date: $
  */

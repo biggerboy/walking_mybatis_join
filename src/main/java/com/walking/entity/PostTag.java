@@ -1,7 +1,7 @@
 package com.walking.entity;
 
 /**
- * @Description: $ 类（或接口）是
+ * 公众号：编程大道
  * @Author: walking
  * @Date: $
  */
