@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 别名 -->
+    <typeAliases>
+        <package name="com.walking"/>
+    </typeAliases>
+
+    <environments default="mysql">
+        <!--配置mysql环境-->
+        <environment id="mysql">
+            <transactionManager type="JDBC"/>
+            <!-- 配置数据源-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/walking_mybatis_join?characterEncoding=utf-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="18301633640pp,"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- 配置映射文件的位置 -->
+    <mappers>
+         <package name="com.walking.mapper"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.walking.mapper.BlogMapper">
+    <!-- 非常复杂的结果映射 -->
+    <resultMap id="detailedBlogResultMap" type="blog">
+        <id property="id" column="id"/>
+        <result property="title" column="blog_title"/>
+        <association property="author" resultMap="com.walking.mapper.AuthorMapper.author"/>
+        <collection property="posts" column="id" select="com.walking.mapper.PostMapper.selectPosts"/>
+    </resultMap>
+
+
+    <!-- 表字段名和实体类的字段名不一致时可以用数据库的特性，起别名 也可以通过resultMap映射-->
+<!--    <select id="selectOneStep" resultMap="detailedBlogResultMap" parameterType="int">-->
+<!--      select-->
+<!--           *-->
+<!--      from Blog B-->
+<!--           left  join Author A on B.author_id = A.id-->
+<!--           left  join Post P on B.id = P.blog_id-->
+<!--           left  join Comment C on P.id = C.post_id-->
+<!--           left  join Post_Tag PT on PT.post_id = P.id-->
+<!--           left  join Tag T on PT.tag_id = T.id-->
+<!--      where B.id = #{id}-->
+<!--    </select>-->
+
+<!--分别查询-->
+    <!-- 表字段名和实体类的字段名不一致时可以用数据库的特性，起别名 也可以通过resultMap映射-->
+    <select id="selectByStep" resultMap="detailedBlogResultMap" parameterType="int">
+      select
+           *
+      from Blog B
+      left join author a
+      on b.author_id = a.author_id
+      where B.id = #{id}
+    </select>
+
+</mapper>

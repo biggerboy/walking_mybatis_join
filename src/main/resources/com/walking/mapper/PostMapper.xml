@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.walking.mapper.PostMapper">
+    <resultMap id="post" type="post">
+        <id property="id" column="id"/>
+        <result property="postName" column="post_name"/>
+        <result property="postContent" column="post_content"/>
+        <association property="author" resultMap="com.walking.mapper.AuthorMapper.author"/>
+
+        <collection property="comments" column="id" select="com.walking.mapper.CommentMapper.selectComments"/>
+        <collection property="postTags" column="id" select="com.walking.mapper.PostTagMapper.selectPostTags" />
+
+    </resultMap>
+    <select id="selectPosts" resultMap="post">
+        select * from post p
+        left join author a on p.author_id = a.author_id
+        where blog_id = #{id}
+    </select>
+
+</mapper>
